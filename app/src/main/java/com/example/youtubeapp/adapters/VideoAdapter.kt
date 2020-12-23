@@ -18,6 +18,7 @@ class VideoAdapter (var list: List<Video>): RecyclerView.Adapter<VideoAdapter.Vi
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val video = list.get(position)
+        holder.imageView.setImageResource(R.drawable.ic_cat_background)
         holder.title.text = video.title
         holder.views.text = video.views
     }

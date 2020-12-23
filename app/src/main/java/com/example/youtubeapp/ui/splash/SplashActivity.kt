@@ -18,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun getLIst(): List<Video> {
         val list = ArrayList<Video>()
-        val video = Video(R.drawable.ic_launcher_background, "Privet KAK DELAAAAAAAAAAA", "1000000000000")
+        val video = Video(R.drawable.ic_cat_background, "Privet KAK DELAAAAAAAAAAA", "1000000000000")
         for (i in 1..10) {
             list.apply {
                 add(video)
