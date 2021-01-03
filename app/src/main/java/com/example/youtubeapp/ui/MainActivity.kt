@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.youtubeapp.R
-import com.example.youtubeapp.ui.splash.SplashActivity
+import com.example.youtubeapp.ui.playlist.PlayListActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        startActivity(Intent(this, SplashActivity::class.java))
+        startActivity(Intent(this, PlayListActivity::class.java))
 
 
     }

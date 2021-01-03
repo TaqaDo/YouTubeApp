@@ -5,10 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.youtubeapp.R
-import com.example.youtubeapp.models.Video
 import kotlinx.android.synthetic.main.splash_holder.view.*
 
-class VideoAdapter (var list: List<Video>): RecyclerView.Adapter<VideoAdapter.ViewHolder>() {
+class PlayListAdapter (var list: List<PlayListInfo>): RecyclerView.Adapter<PlayListAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

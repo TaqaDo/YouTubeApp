@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.YouTubeApp">
-        <activity android:name=".ui.splash.SplashActivity"></activity>
+        <activity android:name=".ui.playlist.PlayListActivity"></activity>
         <activity android:name=".SecondActivity" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>
