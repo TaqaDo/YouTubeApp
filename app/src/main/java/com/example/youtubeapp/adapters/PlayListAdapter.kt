@@ -5,9 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.youtubeapp.R
+import com.example.youtubeapp.models.youtube.PlaylistResponse
 import kotlinx.android.synthetic.main.splash_holder.view.*
 
-class PlayListAdapter (var list: List<PlayListInfo>): RecyclerView.Adapter<PlayListAdapter.ViewHolder>() {
+class PlayListAdapter (var list: List<PlaylistResponse>): RecyclerView.Adapter<PlayListAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -17,9 +18,7 @@ class PlayListAdapter (var list: List<PlayListInfo>): RecyclerView.Adapter<PlayL
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val video = list.get(position)
-        holder.imageView.setImageResource(R.drawable.ic_cat_background)
-        holder.title.text = video.title
-        holder.views.text = video.views
+
     }
 
     override fun getItemCount(): Int {
