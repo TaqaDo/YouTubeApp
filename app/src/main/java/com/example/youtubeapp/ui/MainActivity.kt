@@ -1,22 +1,29 @@
 package com.example.youtubeapp.ui
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProviders
+import android.view.View
+import androidx.lifecycle.Observer
 import com.example.youtubeapp.R
 import com.example.youtubeapp.core.BaseActivity
-import com.example.youtubeapp.core.MainViewModel
-import com.example.youtubeapp.ui.playlist.PlayListActivity
+import com.example.youtubeapp.utills.NetworkConnection
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(R.layout.activity_main) {
-    private lateinit var vm: ViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        vm = ViewModelProviders.of(this).get(MainViewModel::class.java)
+
+        val networkConnection = NetworkConnection(applicationContext)
+        networkConnection.observe(this, Observer { isConnected ->
+            if (isConnected) {
+                layoutConnection.visibility = View.GONE
+            } else {
+                layoutConnection.visibility = View.VISIBLE
+            }
+        })
+
 
     }
+
 
 }
