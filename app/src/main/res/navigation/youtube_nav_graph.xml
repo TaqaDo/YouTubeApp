@@ -24,11 +24,6 @@
             app:destination="@id/videoFragment" />
     </fragment>
     <fragment
-        android:id="@+id/internetContectionFragment"
-        android:name="com.example.youtubeapp.ui.internet_conection.InternetContectionFragment"
-        android:label="internet_contection_fragment"
-        tools:layout="@layout/internet_contection_fragment" />
-    <fragment
         android:id="@+id/videoFragment"
         android:name="com.example.youtubeapp.ui.video.VideoFragment"
         android:label="video_fragment"
