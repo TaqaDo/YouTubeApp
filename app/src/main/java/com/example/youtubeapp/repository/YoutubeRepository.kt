@@ -41,7 +41,7 @@ class YoutubeRepository {
         }
     }
 
-    fun fetchNextDetailsList(nextPageToken: String, videoListId: String) = liveData(Dispatchers.IO) {
+    fun fetchNextDetailsList(videoListId: String, nextPageToken: String) = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
         try {
             emit(Resource.success(data = api.getNextDetailsList(part,videoListId,key,maxResults,nextPageToken)))

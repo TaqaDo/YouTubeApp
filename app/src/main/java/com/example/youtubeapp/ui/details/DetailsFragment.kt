@@ -56,7 +56,7 @@ class DetailsFragment : Fragment(), OnPlaylistClickListener {
     }
 
     private fun pagination() {
-        details_nested_scroll.setOnScrollChangeListener{ nested: NestedScrollView, scrollX, scrollY, oldScrollX, oldScrollY ->
+        nested_scroll.setOnScrollChangeListener{ nested: NestedScrollView, scrollX, scrollY, oldScrollX, oldScrollY ->
             if (scrollY == nested.getChildAt(0).measuredHeight - nested.measuredHeight) {
                 nextPageList?.let {
                     fetchNextList(nextPageList!!)
@@ -78,6 +78,8 @@ class DetailsFragment : Fragment(), OnPlaylistClickListener {
         viewModel.fetchDetailsListFromServer(list.id).observe(viewLifecycleOwner, Observer {
             statusCheck(it)
         })
+        playlist_title.text = list.snippet.title
+        playlist_description.text = list.snippet.channelTitle
     }
 
     private fun statusCheck(it: Resource<PlaylistResponse>?) {

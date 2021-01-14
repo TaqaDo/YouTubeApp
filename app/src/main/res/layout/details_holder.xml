@@ -7,7 +7,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="130dp"
         android:animateLayoutChanges="true">
 
         <LinearLayout
@@ -64,7 +64,7 @@
                     <TextView
                         android:id="@+id/tvTitle"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginBottom="5dp"
                         android:fontFamily="@font/notosans"
                         android:text="Privet Menya Zovut Talgarsfd"
@@ -76,7 +76,7 @@
 
                         android:id="@+id/tvAmountViews"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:fontFamily="@font/notosans"
                         android:text="Privet Menya Zovut Talgar"
                         android:textSize="15sp" />
