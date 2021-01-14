@@ -31,11 +31,13 @@ class ConnectionFragment : Fragment() {
         goToSavedVideos()
 
 
+
     }
 
     private fun goToSavedVideos() {
         btn_saved_videos.setOnClickListener {
-            findNavController().navigate(R.id.action_connectionFragment_to_savedFragment2)
+            findNavController().navigate(R.id.savedFragment2)
+
         }
     }
 

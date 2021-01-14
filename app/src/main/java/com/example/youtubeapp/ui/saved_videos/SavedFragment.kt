@@ -1,18 +1,21 @@
 package com.example.youtubeapp.ui.saved_videos
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.youtubeapp.R
 import com.example.youtubeapp.adapters.DetailsAdapter
 import com.example.youtubeapp.adapters.OnPlaylistClickListener
 import com.example.youtubeapp.models.youtube.Item
 import kotlinx.android.synthetic.main.details_fragment.*
 import kotlinx.android.synthetic.main.saved_fragment.*
+
 
 class SavedFragment : Fragment(), OnPlaylistClickListener {
 
@@ -31,7 +34,14 @@ class SavedFragment : Fragment(), OnPlaylistClickListener {
         viewModel.initRepository(requireContext())
         initRecyclerAdapter()
         fetchData()
+//        remorePreviouseFragmnetFromBackStack()
+
     }
+
+//    private fun remorePreviouseFragmnetFromBackStack() {
+//        findNavController().popBackStack(R.id.connectionFragment, true)
+//
+//    }
 
     private fun fetchData() {
         viewModel.getDetailsFromDB()
@@ -48,5 +58,6 @@ class SavedFragment : Fragment(), OnPlaylistClickListener {
     override fun onItemClick(item: Item) {
 
     }
+
 
 }

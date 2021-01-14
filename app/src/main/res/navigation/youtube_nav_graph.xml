@@ -38,11 +38,7 @@
         android:id="@+id/connectionFragment"
         android:name="com.example.youtubeapp.ui.internetFragment.ConnectionFragment"
         android:label="connection_fragment"
-        tools:layout="@layout/connection_fragment" >
-        <action
-            android:id="@+id/action_connectionFragment_to_savedFragment2"
-            app:destination="@id/savedFragment2" />
-    </fragment>
+        tools:layout="@layout/connection_fragment" />
     <fragment
         android:id="@+id/savedFragment2"
         android:name="com.example.youtubeapp.ui.saved_videos.SavedFragment"
