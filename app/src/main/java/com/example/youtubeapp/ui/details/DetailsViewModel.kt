@@ -31,7 +31,7 @@ class DetailsViewModel : ViewModel() {
         return repo.fetchNextDetailsList(videoId,nextPageToken)
     }
 
-//    fun deleteAll() {
-//        localRepo.deleteAll()
-//    }
+    fun deleteAll() {
+        localRepo.deleteAll()
+    }
 }

@@ -57,6 +57,7 @@ class DetailsFragment : Fragment(), OnPlaylistClickListener {
     }
 
     private fun pagination() {
+        viewModel.deleteAll()
         nested_scroll.setOnScrollChangeListener { nested: NestedScrollView, scrollX, scrollY, oldScrollX, oldScrollY ->
             if (scrollY == nested.getChildAt(0).measuredHeight - nested.measuredHeight) {
                 nextPageList?.let {
@@ -91,7 +92,7 @@ class DetailsFragment : Fragment(), OnPlaylistClickListener {
     }
 
     private fun setData(it: Resource<PlaylistResponse>) {
-//        viewModel.deleteAll()
+
         it.data?.items?.let { it1 ->
             adapter.add(it1)
             viewModel.addDetailsToDB(it1 as MutableList<Item>)

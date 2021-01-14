@@ -15,7 +15,7 @@ class YoutubeLocalRepository(context: Context) {
         return youtubeDao.addDetailsList(list)
     }
 
-//    fun deleteAll() {
-//        youtubeDao.deleteAll()
-//    }
+    fun deleteAll() {
+        youtubeDao.deleteAll()
+    }
 }
