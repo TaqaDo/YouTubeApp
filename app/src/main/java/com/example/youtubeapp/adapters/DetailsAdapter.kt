@@ -12,8 +12,8 @@ import com.example.youtubeapp.models.youtube.PlaylistResponse
 import kotlinx.android.synthetic.main.splash_holder.view.*
 import java.security.AccessController.getContext
 
-class PlayListAdapter(var onClickListener: OnPlaylistClickListener)
-    : RecyclerView.Adapter<PlayListAdapter.ViewHolder>() {
+class DetailsAdapter(var onClickListener: OnPlaylistClickListener)
+    : RecyclerView.Adapter<DetailsAdapter.ViewHolder>() {
 
     var list = ArrayList<Item>()
 
@@ -23,7 +23,7 @@ class PlayListAdapter(var onClickListener: OnPlaylistClickListener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.splash_holder, parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.details_holder, parent, false)
         return ViewHolder(v)
     }
 
@@ -43,7 +43,7 @@ class PlayListAdapter(var onClickListener: OnPlaylistClickListener)
         fun onBind(item: Item) {
             itemView.apply {
                 tvTitle.text = item.snippet?.title
-                tvAmountViews.text = (item.contentDetails?.itemCount.toString() + " video series")
+                tvAmountViews.text = (item.snippet?.publishedAt)
                 Glide.with(itemView.context).load(item.snippet?.thumbnails?.medium?.url).into(ivVideo)
             }
         }

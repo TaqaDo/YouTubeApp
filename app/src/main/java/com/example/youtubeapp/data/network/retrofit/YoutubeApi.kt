@@ -11,6 +11,33 @@ interface YoutubeApi {
     suspend fun fetchPlaylists(
         @Query("part") part:String,
         @Query("channelId") channelId:String,
-        @Query("key") key:String
-    ): Call<PlaylistResponse>
+        @Query("key") key:String,
+        @Query("maxResults") maxResults: Int
+    ):PlaylistResponse
+
+    @GET("youtube/v3/playlists")
+    suspend fun getNextPlaylists(
+            @Query("part")part : String,
+            @Query("channelId") channelId:String,
+            @Query("key") key : String,
+            @Query("maxResults") maxResults : Int,
+            @Query("pageToken") nextPageToken : String? = null
+    ): PlaylistResponse
+
+    @GET("youtube/v3/playlistItems")
+    suspend fun getDetailsList(
+            @Query("part")part : String,
+            @Query("playlistId") playlistId:String,
+            @Query("key") key : String,
+            @Query("maxResults") maxResults : Int
+    ) : PlaylistResponse
+
+    @GET("youtube/v3/playlistItems")
+    suspend fun getNextDetailsList(
+            @Query("part")part : String,
+            @Query("playlistId") playlistId:String,
+            @Query("key") key : String,
+            @Query("maxResults") maxResults : Int,
+            @Query("pageToken") nextPageToken : String? = null
+    ) : PlaylistResponse
 }

@@ -45,22 +45,6 @@
                         android:paddingLeft="14dp"
                         android:paddingRight="14dp" />
 
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:background="@drawable/black_transparent"
-                            android:layout_alignParentBottom="true"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Playlist"
-                            android:textColor="@color/white"
-                            android:layout_alignParentBottom="true"
-                            android:textAlignment="textEnd"
-                            android:textSize="20sp"
-                            android:layout_margin="3dp"/>
                     </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>

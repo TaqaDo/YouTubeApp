@@ -1,47 +1,53 @@
 package com.example.youtubeapp.repository
 
-import android.content.ContentValues.TAG
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.example.youtubeapp.data.network.retrofit.RetrofitClient
-import com.example.youtubeapp.models.youtube.PlaylistResponse
-import com.example.youtubeapp.utills.Constants
+import com.example.youtubeapp.models.resource_courutines.Resource
 import com.example.youtubeapp.utills.Constants.Companion.API
-import kotlinx.coroutines.Dispatchers.IO
-import okhttp3.Dispatcher
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.Dispatchers
 
 class YoutubeRepository {
 
-    val channelId = "UCApdP81v1rMFGiFUq-A7vBQ"
+    val channelId = "UC_pwIXKXNm5KGhdEVzmY60A"
     val key  = API
     val part = "snippet,contentDetails"
+    val maxResults = 10
     private val api = RetrofitClient().retrofitInstance()
 
-    fun fetchPlaylists() = liveData(Dispatcher.IO) {
-
+    fun fetchPlaylists() = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = api.fetchPlaylists(part,channelId,key,maxResults)))
+        } catch (ex: Exception) {
+            emit(Resource.error(data = null, message = ex.message.toString()))
+        }
     }
 
-    fun fetchPlaylistFromServer(): MutableLiveData<PlaylistResponse>{
-        var data = MutableLiveData<PlaylistResponse>()
-        api.fetchPlaylists(part,channelId,key).enqueue(object :
-            retrofit2.Callback<PlaylistResponse> {
-            override fun onResponse(
-                call: Call<PlaylistResponse>,
-                response: Response<PlaylistResponse>
-            ) {
-                data.value = response.body()
-            }
-
-            override fun onFailure(call: Call<PlaylistResponse>, t: Throwable) {
-                Log.e(TAG, "onFailure: $t " )
-            }
-
-        })
-        return data
-
+    fun fetchNextPlaylist(nextPageToken: String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = api.getNextPlaylists(part, channelId, key, maxResults, nextPageToken)))
+        } catch (ex: Exception) {
+            emit(Resource.error(data = null, message = ex.message.toString()))
+        }
     }
+
+    fun fetchDetailsList(videoListId: String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = api.getDetailsList(part, videoListId, key, maxResults)))
+        } catch (ex: Exception) {
+            emit(Resource.error(data = null, message = ex.message.toString()))
+        }
+    }
+
+    fun fetchNextDetailsList(nextPageToken: String, videoListId: String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = api.getNextDetailsList(part,videoListId,key,maxResults,nextPageToken)))
+        } catch (ex: Exception) {
+            emit(Resource.error(data = null, message = ex.message.toString()))
+        }
+    }
+
 }
