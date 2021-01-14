@@ -6,7 +6,7 @@ import com.example.youtubeapp.models.resource_courutines.Resource
 import com.example.youtubeapp.utills.Constants.Companion.API
 import kotlinx.coroutines.Dispatchers
 
-class YoutubeRepository {
+class YoutubeNetworkRepository {
 
     val channelId = "UC_pwIXKXNm5KGhdEVzmY60A"
     val key  = API

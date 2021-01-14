@@ -49,6 +49,7 @@ class DetailsFragment : Fragment(), OnPlaylistClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(DetailsViewModel::class.java)
+        viewModel.initRepository(requireContext())
         initRecyclerAdapter()
         fetchData()
         pagination()
@@ -56,7 +57,7 @@ class DetailsFragment : Fragment(), OnPlaylistClickListener {
     }
 
     private fun pagination() {
-        nested_scroll.setOnScrollChangeListener{ nested: NestedScrollView, scrollX, scrollY, oldScrollX, oldScrollY ->
+        nested_scroll.setOnScrollChangeListener { nested: NestedScrollView, scrollX, scrollY, oldScrollX, oldScrollY ->
             if (scrollY == nested.getChildAt(0).measuredHeight - nested.measuredHeight) {
                 nextPageList?.let {
                     fetchNextList(nextPageList!!)
@@ -83,15 +84,17 @@ class DetailsFragment : Fragment(), OnPlaylistClickListener {
     }
 
     private fun statusCheck(it: Resource<PlaylistResponse>?) {
-        when(it?.status) {
+        when (it?.status) {
             Status.SUCCESS -> setData(it)
-            Status.ERROR -> context?.showToast(it.message?:"ERROR")
+            Status.ERROR -> context?.showToast(it.message ?: "ERROR")
         }
     }
 
     private fun setData(it: Resource<PlaylistResponse>) {
-        it.data?.items?.let {
-            it1 -> adapter.add(it1)
+//        viewModel.deleteAll()
+        it.data?.items?.let { it1 ->
+            adapter.add(it1)
+            viewModel.addDetailsToDB(it1 as MutableList<Item>)
         }
         nextPageList = it.data?.nextPageToken
     }

@@ -4,7 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.example.youtubeapp.models.youtube.Item
+import com.example.youtubeapp.utills.Converters
 
 
 @Database(
@@ -12,6 +14,7 @@ import com.example.youtubeapp.models.youtube.Item
         version = 1,
         exportSchema = false
 )
+@TypeConverters(Converters::class)
 abstract class YoutubeDatabase: RoomDatabase() {
 
     abstract fun youTubedao(): YoutubeDao

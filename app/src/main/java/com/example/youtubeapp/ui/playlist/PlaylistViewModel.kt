@@ -1,15 +1,13 @@
 package com.example.youtubeapp.ui.playlist
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.youtubeapp.models.resource_courutines.Resource
 import com.example.youtubeapp.models.youtube.PlaylistResponse
-import com.example.youtubeapp.repository.YoutubeRepository
-import retrofit2.Call
+import com.example.youtubeapp.repository.YoutubeNetworkRepository
 
 class PlaylistViewModel : ViewModel() {
-    var repo = YoutubeRepository()
+    var repo = YoutubeNetworkRepository()
 
     fun fetchPlaylistFromServer(): LiveData<Resource<PlaylistResponse>> {
         return repo.fetchPlaylists()
