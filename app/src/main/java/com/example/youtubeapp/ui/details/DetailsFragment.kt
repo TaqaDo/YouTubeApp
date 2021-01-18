@@ -107,7 +107,7 @@ class DetailsFragment : Fragment(), OnPlaylistClickListener {
 
 
     override fun onItemClick(item: Item) {
-
+        findNavController().navigate(R.id.videoFragment)
     }
 
 }

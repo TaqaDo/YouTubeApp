@@ -44,7 +44,7 @@ class PlayListAdapter(var onClickListener: OnPlaylistClickListener)
             itemView.apply {
                 tvTitle.text = item.snippet?.title
                 tvAmountViews.text = (item.contentDetails?.itemCount.toString() + " video series")
-                Glide.with(itemView.context).load(item.snippet?.thumbnails?.medium?.url).into(ivVideo)
+                Glide.with(this).load(item.snippet?.thumbnails?.medium?.url).into(ivVideo)
             }
         }
 
